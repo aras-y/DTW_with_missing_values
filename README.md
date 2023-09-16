@@ -11,7 +11,10 @@ Corresponding paper:
 > Aras Yurtman, Jonas Soenen, Wannes Meert, Hendrik Blockeel, "Estimating Dynamic Time Warping Distance Between Time Series with Missing Data," European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Databases (ECML-PKDD) 2023. https://lirias.kuleuven.be/4091041?limo=0
 
 ## How to install
-TODO
+
+On this directory, run:
+
+    python -m pip install .
 
 ## How to use:
 

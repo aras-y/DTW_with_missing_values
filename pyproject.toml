@@ -1,0 +1,32 @@
+# pyproject.toml
+
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+namespaces = true
+where = ["dtw_missing"]
+
+[project]
+name = "dtwmissing"
+version = "0.0.0"
+description = "estimating Dynamic Time Warping (DTW) distance between time series with missing data"
+readme = "readme.md"
+authors = [{ name = "Aras Yurtman" } , { name = "Jonas Soenen" }]
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: Apache 2.0 License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["dynamic time warping", "DTW", "time series", "missing values"]
+dependencies = [
+    "dtaidistance >= 2.3.11",
+    "numpy >= 1.20",
+    "scipy >= 1.10",
+    "joblib >= 1.1.0", 
+    "yellowbrick >= 1.5", 
+    "scikit-learn-extra >= 0.2.0"
+]
+requires-python = ">=3.8"

@@ -125,8 +125,14 @@ class Experiment:
                                                            0: Instead of DBA, use medoid with linear interpolation. 
                                                            -1: Instead of DBA, use mean with linear interpolation.
                                                            DEFAULT: 1 (only a single iteration of DBA)
-                                              
-                                              ...
+                                              no_clusters_range_for_elbow: For the elbow method, the range (as a tuple) for the number of clusters.
+                                                                           DEFAULT: (2,15)
+                                              dba_init: Initialization for DBA.
+                                                        None:     random initialization
+                                                        'medoid': initialize with the medoid
+                                              random_state: Random seed for DBA initialization (used when dba_init is None).
+                                              dba_thr: Threshold on the change in the barycenter average (as the mean absolute difference) 
+                                                       used as a stopping criterion for DBA.
         :param n_jobs: The number of parallel jobs. DEFAULT: -1 (use all available resources).
         :param progress_bar: Whether to show a progress bar or not. DEFAULT: False.
         :return: Pairwise distance matrix D.

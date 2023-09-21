@@ -75,7 +75,7 @@ Example (see `notebooks/example_dtw_cai.ipynb`):
     e_dtw_cai.dataset = dataset
     e_dtw_cai.compute_pairwise_distances('dtw_cai', 
                                      missing_method_params=[dtw_params, dtw_cai_params],
-                                     progress_bar=True, n_jobs=1)
+                                     progress_bar=True)
 
 
 ### How to choose between DTW-AROW and DTW-CAI:

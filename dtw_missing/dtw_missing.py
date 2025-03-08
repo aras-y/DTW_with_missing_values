@@ -94,7 +94,7 @@ def warping_paths(s1, s2, window=None, max_dist=None, use_pruning=False,
         raise NumpyException("Numpy is required for the warping_paths method")
     
     # Always use ndim to use np functions
-    cost, result_fn_innerdistance = innerdistance.inner_dist_fns(inner_dist, use_ndim=True) # cost is not used if cost_matrix is specified, and result_fn_innerdistance is not used if it is specified
+    cost, result_fn_innerdistance, *_ = innerdistance.inner_dist_fns(inner_dist, use_ndim=True) # cost is not used if cost_matrix is specified, and result_fn_innerdistance is not used if it is specified
     if result_fn is None:
         result_fn = result_fn_innerdistance
     
@@ -122,7 +122,7 @@ def warping_paths(s1, s2, window=None, max_dist=None, use_pruning=False,
         penalty = 0
     else:
         penalty *= penalty
-    psi_1b, psi_1e, psi_2b, psi_2e = dtaidistance_dtw._process_psi_arg(psi)
+    psi_1b, psi_1e, psi_2b, psi_2e = process_psi_arg(psi)
     
     if missing_value_restrictions is None or missing_value_restrictions == "none":
         missing_restrict = False
@@ -510,3 +510,17 @@ def calculate_missing_bounds_fast(s1, s2, missing_fun=None, missing_value_restri
     # rib = [c-1 for i in range(r)] # dummy result
     
     return [leb, rib], constrained_warping_path_possible
+
+def process_psi_arg(psi):
+    psi_1b = 0
+    psi_1e = 0
+    psi_2b = 0
+    psi_2e = 0
+    if type(psi) is int:
+        psi_1b = psi
+        psi_1e = psi
+        psi_2b = psi
+        psi_2e = psi
+    elif type(psi) in [tuple, list]:
+        psi_1b, psi_1e, psi_2b, psi_2e = psi
+    return psi_1b, psi_1e, psi_2b, psi_2e
